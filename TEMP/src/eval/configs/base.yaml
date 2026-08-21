@@ -1,0 +1,46 @@
+tokenizer_path: null
+port: 28025
+dp: 4
+tp: 1
+mem_fraction_static: 0.8
+log_level: warning
+
+use_chat_template: True
+max_tokens: -1
+max_new_tokens: 2048
+print_example: False
+force_think: False
+max_new_answer_tokens: 1024
+think_str: "<|im_start|>think\n"
+start_answer_str: "<|im_start|>answer"
+start_overthink_answer_str: "<|im_start|>answer\nFinal Answer:"
+
+
+seed: 42
+
+eval_data_path: data/m1_eval_data.json
+eval_data_md5sum: fe50ce67a958cfa9bc958a51b2502e57
+
+limit: -1
+
+prefix_prompt: null
+prefix_prompt_delimiter: "\n"
+suffix_prompt: null
+suffix_prompt_delimiter: "\n"
+batch_size: 1024
+
+output_dir: outputs
+exp_name: debug
+
+overwrite: false
+version: null
+
+# gen parameters
+temperature: 0.0
+frequency_penalty: 0.0
+# default openai api timeout: openai/_constants.py
+timeout: 600
+
+# test time scaling when not reaching (thinking) max_new_tokens
+keep_think_below_budget_times: 0
+keep_think_below_budget_str: "Wait"

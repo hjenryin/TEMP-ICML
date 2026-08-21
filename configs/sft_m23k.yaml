@@ -1,0 +1,61 @@
+### Model configuration
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
+trust_remote_code: true
+
+### Training method
+stage: sft
+do_train: true
+finetuning_type: full
+
+### Dataset configuration - will be overridden via CLI
+dataset_dir:
+dataset:
+template: qwen
+cutoff_len: 8192
+overwrite_cache: true
+preprocessing_num_workers: 32
+
+### Output configuration - will be overridden via CLI
+output_dir:
+logging_steps: 1
+save_steps: 1000
+plot_loss: true
+save_only_model: true
+seed: 1
+
+### Training hyperparameters
+per_device_train_batch_size:   # Will be overridden via CLI based on GPU count
+gradient_accumulation_steps:   # Will be overridden via CLI to maintain effective batch size of 16
+learning_rate: 1.0e-5
+num_train_epochs: 5
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 1.0e-4
+
+### Optimizer configuration
+adam_beta1: 0.9
+adam_beta2: 0.95
+
+
+
+### Mixed precision and optimization
+bf16: true
+flash_attn: fa2
+
+### Distributed training configuration (FSDP)
+# fsdp: "full_shard auto_wrap"
+# fsdp_config: ${REPO_ROOT}/TEMP/src/train/fsdp_config_qwen.json
+deepspeed: ../configs/ds_z2_config.json
+ddp_timeout: 1800000
+enable_liger_kernel: true 
+dataloader_drop_last: true
+
+### Evaluation strategy
+eval_strategy: "no"
+
+### Logging and monitoring
+report_to: wandb
+run_name: qwen_7b_selection_baseline_llama_factory
+
+### Gradient checkpointing
+gradient_checkpointing: true

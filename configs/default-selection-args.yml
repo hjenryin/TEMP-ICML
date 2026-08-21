@@ -1,0 +1,4 @@
+# Selection defaults for TEMP clustering
+init_label_num: 1000
+sampling_method: "learnability"
+cluster_features: "raw"         # Options: "raw", "standardized"

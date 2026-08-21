@@ -1,0 +1,14 @@
+# Data & outputs (large / generated)
+data/m23k-prd-sharegpt/train.jsonl
+data/op114kmath-prd-sharegpt/train.jsonl
+outputs/
+**/__pycache__/
+*.pyc
+.venv/
+.env
+wandb/
+*.pt
+*.npy
+!**/labeled_idx.npy
+.DS_Store
+*.pdf
